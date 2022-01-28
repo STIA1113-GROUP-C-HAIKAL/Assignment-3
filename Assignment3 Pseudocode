@@ -1,0 +1,1833 @@
+>START
+	OUTPUT          display1();
+	INPUT           typeOfTravel
+	WHILE           typeOfTravel is not equal to 1 and 2{
+	    OUTPUT          "Invalid Input, please try again"
+	    INPUT           typeOfTravel
+	    }
+	IF              typeOfTravel is equal to 1 {
+	    OUTPUT          "Please enter the length and width of ship \n With the format of (width length) : "
+	    INPUT           lengthOfShip && widthOfShip
+	    OUTPUT          "\nPlease insert the number of guests that will be aboard on the ship : "
+	    INPUT           guests
+	    OUTPUT          "\nPlease insert the number of insurance money per-guests in the ship : "
+	    INPUT           insuranceMoney
+	    OUTPUT          "\nPlease insert the number of employees that will be employed on the ship : "
+	    INPUT           employees
+	    CALCULATE       totalPassengers = totalPassengers(guests,employees);
+	    OUTPUT          "\nPlease insert the type of employee that will be employed on the ship : "
+	    OUTPUT  	    "\n1.High end employees\t2.Mid end employees\t3.Low end employees"
+	    INPUT           employeeType
+	    WHILE           employeeType is not equal to 1 and 2 and 3{
+	        OUTPUT          System.out.print("\nInvalid input, please try again");
+	        INPUT           employeeType
+	    }
+	    IF              employeeType is equal to 1 {
+	        OUTPUT          "You have chosen, High End Employees!"
+	        OUTPUT          proceedScreen();
+	        INPUT           decision
+	        WHILE           decision is not equal to 1 and 2 {
+	            OUTPUT          "\nInvalid input, please try again"
+	    		INPUT           decision
+	        }
+	        IF              decision is equal to 1 {
+	            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+	    		OUTPUT			"\n1.Huge\t\t2.Medium"
+	    		INPUT           lifeboatType
+	    		WHILE           lifeboatType is not equal to 1 and 2 {
+	    		    OUTPUT          "\nInvalid input, please try again"
+	    		    INPUT           lifeboatType
+	    		    }
+	    	    IF              lifeboatType is equal to 1 {
+	    	        INPUT           new HugeLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    ELSE IF               lifeboatType is equal to 2 {
+	    	    	INPUT           new MediumLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    
+	    	ELSE IF        decision is equal to 2 {
+	    	    OUTPUT          main(args);
+	    	}
+	    		}
+			
+	    }
+	    ELSE IF              employeeType is equal to 2 {
+	    	OUTPUT          "You have chosen, Mid End Employees!"
+	        OUTPUT          proceedScreen();
+	        INPUT           decision
+	        WHILE           decision is not equal to 1 and 2 {
+	            OUTPUT          "\nInvalid input, please try again"
+	    		INPUT           decision
+	        }
+	        IF              decision is equal to 1 {
+	            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+	    		OUTPUT			"\n1.Huge\t\t2.Medium"
+	    		INPUT           lifeboatType
+	    		WHILE           lifeboatType is not equal to 1 and 2 {
+	    		    OUTPUT          "\nInvalid input, please try again"
+	    		    INPUT           lifeboatType
+	    		    }
+	    	    IF              lifeboatType is equal to 1 {
+	    	        INPUT           new HugeLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    ELSE IF               lifeboatType is equal to 2 {
+	    	    	INPUT           new MediumLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    
+	    	ELSE IF        decision is equal to 2 {
+	    	    OUTPUT          main(args);
+	    	}
+	    		}
+			
+	    }
+	    
+	    ELSE IF              employeeType is equal to 3 { 
+	    	OUTPUT          "You have chosen, Low End Employees!"
+	        OUTPUT          proceedScreen();
+	        INPUT           decision
+	        WHILE           decision is not equal to 1 and 2 {
+	            OUTPUT          "\nInvalid input, please try again"
+	    		INPUT           decision
+	        }
+	        IF              decision is equal to 1 {
+	            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+	    		OUTPUT			"\n1.Huge\t\t2.Medium"
+	    		INPUT           lifeboatType
+	    		WHILE           lifeboatType is not equal to 1 and 2 {
+	    		    OUTPUT          "\nInvalid input, please try again"
+	    		    INPUT           lifeboatType
+	    		    }
+	    	    IF              lifeboatType is equal to 1 {
+	    	        INPUT           new HugeLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    ELSE IF               lifeboatType is equal to 2 {
+	    	    	INPUT           new MediumLifeboat();
+	    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+	    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+	    	        OUTPUT
+					OUTPUT			"=========================================================="
+					OUTPUT			"Size and distance details : "
+					OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+					OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+					OUTPUT          "---------------------------------------------------------"
+					OUTPUT          "Equipment details : "
+					OUTPUT          "Life boats that will be on the ship = " + lifeboats
+					OUTPUT          "Per-lifeboat equipment details : "
+	    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+	    	        }
+	    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+	    	        OUTPUT          "========================================================== "
+	    	        OUTPUT          proceedScreen();
+	    	        INPUT           decision
+	    	        WHILE           decision is not equal to 1 and 2 {
+	                    OUTPUT          "\nInvalid input, please try again"
+	    	        	INPUT           decision
+	                 }
+	                 IF             decision is equal to 1 {
+	                     OUTPUT         "Receipt of equipment details"
+	                     OUTPUT         "=========================================================="
+	                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+	    	            }
+	    	            OUTPUT          "=========================================================="
+	    	            OUTPUT          proceedScreen();
+	    	            INPUT           decision
+	    	            WHILE           decision is not equal to 1 and 2 {
+	                        OUTPUT          "\nInvalid input, please try again"
+	    	        	    INPUT           decision
+	                        }
+	                    IF              decision is equal to 1 {
+	                        OUTPUT           "=========================================================="
+							OUTPUT           "Price details : "
+							OUTPUT          "Price of one sprinkler			=  USD 2.00"
+							OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+							OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+							FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+	    	                    }
+	    	               OUTPUT           "=========================================================="
+	    	               OUTPUT          proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	    	        	        INPUT           decision
+	                            }
+	                       OUTPUT           "=========================================================="
+	                       OUTPUT           "All equipments price details : "
+						   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+						   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+						   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+	                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+	    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+	    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+	    	                    }
+	    	               CALCULATE         totalPrice = sum + employeeCost
+	    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+	    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+						   OUTPUT            "---------------------------------------------------------"
+						   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+	    	               OUTPUT            proceedScreen();
+	    	               INPUT           decision
+	    	               WHILE           decision is not equal to 1 and 2 {
+	                            OUTPUT          "\nInvalid input, please try again"
+	        	        	    INPUT           decision
+	                            }
+	                       IF   decision is equal to 1 {
+	                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+	                         > END
+	                       }
+	                       ELSE IF decision is equal to 2 {
+	                         OUTPUT  main(args);
+	                       }
+	                    }
+	                    ELSE IF decision is equal to 2 {
+	                      OUTPUT  main(args);
+	                    }
+	                 }
+	                 ELSE IF decision is equal to 2 {
+	                    OUTPUT   main(args);
+	                 }
+	    	    }
+	    	    
+	    	    
+	    	ELSE IF        decision is equal to 2 {
+	    	    OUTPUT          main(args);
+	    	}
+	    		}
+			
+	    }
+	}
+	IF              typeOfTravel is equal to 2 {
+		 OUTPUT          "Please enter the length and width of ship \n With the format of (width length) : "
+		    INPUT           lengthOfShip && widthOfShip
+		    OUTPUT          "\nPlease insert the number of guests that will be aboard on the ship : "
+		    INPUT           guests
+		    OUTPUT          "\nPlease insert the number of insurance money per-guests in the ship : "
+		    INPUT           insuranceMoney
+		    OUTPUT          "\nPlease insert the number of employees that will be employed on the ship : "
+		    INPUT           employees
+		    CALCULATE       totalPassengers = totalPassengers(guests,employees);
+		    OUTPUT          "\nPlease insert the type of employee that will be employed on the ship : "
+		    OUTPUT  	    "\n1.High end employees\t2.Mid end employees\t3.Low end employees"
+		    INPUT           employeeType
+		    WHILE           employeeType is not equal to 1 and 2 and 3{
+		        OUTPUT          System.out.print("\nInvalid input, please try again");
+		        INPUT           employeeType
+		    }
+		    IF              employeeType is equal to 1 {
+		        OUTPUT          "You have chosen, High End Employees!"
+		        OUTPUT          proceedScreen();
+		        INPUT           decision
+		        WHILE           decision is not equal to 1 and 2 {
+		            OUTPUT          "\nInvalid input, please try again"
+		    		INPUT           decision
+		        }
+		        IF              decision is equal to 1 {
+		            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+		    		OUTPUT			"\n1.Huge\t\t2.Medium\t\t3.Small\t\t4.Liferafts"
+		    		INPUT           lifeboatType
+		    		WHILE           lifeboatType is not equal to 1 and 2 {
+		    		    OUTPUT          "\nInvalid input, please try again"
+		    		    INPUT           lifeboatType
+		    		    }
+		    	    IF              lifeboatType is equal to 1 {
+		    	        INPUT           new HugeLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    ELSE IF               lifeboatType is equal to 2 {
+		    	    	INPUT           new MediumLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 3 {
+		    	    	INPUT           new SmallLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 4 {
+		    	    	INPUT           new Liferafts();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    
+		    	ELSE IF        decision is equal to 2 {
+		    	    OUTPUT          main(args);
+		    	}
+		    		}
+				
+		    }
+		    IF              employeeType is equal to 2 {
+		        OUTPUT          "You have chosen, Mid End Employees!"
+		        OUTPUT          proceedScreen();
+		        INPUT           decision
+		        WHILE           decision is not equal to 1 and 2 {
+		            OUTPUT          "\nInvalid input, please try again"
+		    		INPUT           decision
+		        }
+		        IF              decision is equal to 1 {
+		            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+		    		OUTPUT			"\n1.Huge\t\t2.Medium\t\t3.Small\t\t4.Liferafts"
+		    		INPUT           lifeboatType
+		    		WHILE           lifeboatType is not equal to 1 and 2 {
+		    		    OUTPUT          "\nInvalid input, please try again"
+		    		    INPUT           lifeboatType
+		    		    }
+		    	    IF              lifeboatType is equal to 1 {
+		    	        INPUT           new HugeLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    ELSE IF               lifeboatType is equal to 2 {
+		    	    	INPUT           new MediumLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 3 {
+		    	    	INPUT           new SmallLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 4 {
+		    	    	INPUT           new Liferafts();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    
+		    	ELSE IF        decision is equal to 2 {
+		    	    OUTPUT          main(args);
+		    	}
+		    		}
+				
+		    }
+		    IF              employeeType is equal to 3 {
+		        OUTPUT          "You have chosen, Low End Employees!"
+		        OUTPUT          proceedScreen();
+		        INPUT           decision
+		        WHILE           decision is not equal to 1 and 2 {
+		            OUTPUT          "\nInvalid input, please try again"
+		    		INPUT           decision
+		        }
+		        IF              decision is equal to 1 {
+		            OUTPUT          "\nPlease insert the type of lifeboat you want to have in your liner : ");
+		    		OUTPUT			"\n1.Huge\t\t2.Medium\t\t3.Small\t\t4.Liferafts"
+		    		INPUT           lifeboatType
+		    		WHILE           lifeboatType is not equal to 1 and 2 {
+		    		    OUTPUT          "\nInvalid input, please try again"
+		    		    INPUT           lifeboatType
+		    		    }
+		    	    IF              lifeboatType is equal to 1 {
+		    	        INPUT           new HugeLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    ELSE IF               lifeboatType is equal to 2 {
+		    	    	INPUT           new MediumLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 3 {
+		    	    	INPUT           new SmallLifeboat();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    ELSE IF               lifeboatType is equal to 4 {
+		    	    	INPUT           new Liferafts();
+		    	        CALCULATE       lifeboats = lifeboatCalculation(totalPassengers, lifeboat.capacity)
+		    	        CALCULATE       employeersPerLifeboat = employeeCalculation(employees, lifeboats)
+		    	        OUTPUT
+						OUTPUT			"=========================================================="
+						OUTPUT			"Size and distance details : "
+						OUTPUT          "Ships 2D size\t\t\t\t\t= " + array1[0] + "meters"
+						OUTPUT          "Ships safe distance to an island \t\t= " + array1[1] + " meters"
+						OUTPUT          "---------------------------------------------------------"
+						OUTPUT          "Equipment details : "
+						OUTPUT          "Life boats that will be on the ship = " + lifeboats
+						OUTPUT          "Per-lifeboat equipment details : "
+		    	        FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	            OUTPUT          ed.equipmentName[i] + "\t\t = " + hl.equipments[i]
+		    	        }
+		    	        OUTPUT          "Employees per life boat		= " + employeesPerLifeboat
+		    	        OUTPUT          "========================================================== "
+		    	        OUTPUT          proceedScreen();
+		    	        INPUT           decision
+		    	        WHILE           decision is not equal to 1 and 2 {
+		                    OUTPUT          "\nInvalid input, please try again"
+		    	        	INPUT           decision
+		                 }
+		                 IF             decision is equal to 1 {
+		                     OUTPUT         "Receipt of equipment details"
+		                     OUTPUT         "=========================================================="
+		                     FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                OUTPUT          "Total " + ed.equipmentName[i] + "\t\t = " + (lifeboats* hl.equipments[i])
+		    	            }
+		    	            OUTPUT          "=========================================================="
+		    	            OUTPUT          proceedScreen();
+		    	            INPUT           decision
+		    	            WHILE           decision is not equal to 1 and 2 {
+		                        OUTPUT          "\nInvalid input, please try again"
+		    	        	    INPUT           decision
+		                        }
+		                    IF              decision is equal to 1 {
+		                        OUTPUT           "=========================================================="
+								OUTPUT           "Price details : "
+								OUTPUT          "Price of one sprinkler			=  USD 2.00"
+								OUTPUT          "Price of one fire extinguisher		=  USD 35.00"
+								OUTPUT          "Price of one life boat			=  USD " + lifeboat.cost
+								FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          "Price of one" + ed.equipmentName[i] + "\t\t = USD " + ed.equipmentValue[i]
+		    	                    }
+		    	               OUTPUT           "=========================================================="
+		    	               OUTPUT          proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		    	        	        INPUT           decision
+		                            }
+		                       OUTPUT           "=========================================================="
+		                       OUTPUT           "All equipments price details : "
+							   OUTPUT           "Sprinklers		= " + (array1[2] * ed.sprinklerPrice)
+							   OUTPUT           "Fire Extinguishers	= " + (array1[3] * ed.fireExtinguisherPrice)
+							   OUTPUT           "Lifeboats		= " + (hl.cost * lifeboats)
+		                       FOR             I EQUALS TO 0, I IS LESS THAN equipmentName.length {
+		    	                    OUTPUT          ed.equipmentName[i] + "\t\t = " + ((lifeboats * lifeboat.equipments[i]) * lifeboat.equipmentValue[i])
+		    	                    CALCULATE       sum = sum + (lifeboats * lifeboat.equipment[i]) * ed.equipmentValue[i]
+		    	                    }
+		    	               CALCULATE         totalPrice = sum + employeeCost
+		    	               OUTPUT            "Total price of the whole equipment is : USD" + sum
+		    	               OUTPUT            "The total price of the whole crew of employees is : USD" + employeeCost
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The whole budget would be : USD" + (sum + employeeCost)
+							   OUTPUT            "---------------------------------------------------------"
+							   OUTPUT            "The risk of the ship getting caught into an accident : %" + (hl.risk + te.risk)
+		    	               OUTPUT            proceedScreen();
+		    	               INPUT           decision
+		    	               WHILE           decision is not equal to 1 and 2 {
+		                            OUTPUT          "\nInvalid input, please try again"
+		        	        	    INPUT           decision
+		                            }
+		                       IF   decision is equal to 1 {
+		                         OUTPUT  LastMethod(totalPrice, insuranceMoney, guests)
+		                         > END
+		                       }
+		                       ELSE IF decision is equal to 2 {
+		                         OUTPUT  main(args);
+		                       }
+		                    }
+		                    ELSE IF decision is equal to 2 {
+		                      OUTPUT  main(args);
+		                    }
+		                 }
+		                 ELSE IF decision is equal to 2 {
+		                    OUTPUT   main(args);
+		                 }
+		    	    }
+		    	    
+		    	    
+		    	ELSE IF        decision is equal to 2 {
+		    	    OUTPUT          main(args);
+		    	}
+		    		}
+				
+		    }
+	
+	}
